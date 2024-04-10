@@ -1,0 +1,153 @@
+<div class="container-fluid">
+  <div class="row" style="margin-top: 1rem">
+    <div
+      class="btn boton_flotante boton_flotante_nuevo"
+      style="width: 117px !important"
+    >
+      <img src="assets/Common/Guardar.svg" width="100%" alt="Guardar" />
+      Guardar
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 1rem">
+    <a target="_blank">
+      <div class="btn boton_flotante boton_flotante_subir">
+        <img src="assets/Common/PDF.svg" width="100%" alt="PDF" /> PDF
+      </div>
+    </a>
+  </div>
+
+  <div class="row">
+    <div class="col-md-3">
+      <label class="labelBold">Tipo de Calificación: </label>
+      <select class="form-control formControl" disabled>
+        <option value="NUMERICO">NUMERICO</option>
+        <option value="TEXTO">TEXTO</option>
+      </select>
+    </div>
+  </div>
+
+  <input id="idHorario" style="display: none" value="horario-id" />
+  <div class="table-responsive p-0" style="margin-top: 1rem">
+    <table class="table mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-uppercase text-sm">#</th>
+          <th class="text-uppercase text-sm">Alumno</th>
+          <th class="text-uppercase text-center text-sm">Parcial 1</th>
+          <th class="text-uppercase text-center text-sm">Acred 1</th>
+          <th class="text-uppercase text-center text-sm">Asist 1</th>
+          <th class="text-uppercase text-center text-sm">Parcial 2</th>
+          <th class="text-uppercase text-center text-sm">Acred 2</th>
+          <th class="text-uppercase text-center text-sm">Asist 2</th>
+          <th class="text-uppercase text-center text-sm">Parcial 3</th>
+          <th class="text-uppercase text-center text-sm">Acred 3</th>
+          <th class="text-uppercase text-center text-sm">Asist 3</th>
+          <th class="text-uppercase text-center text-sm">Promedio</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="destacarFilaDetabla">
+          <td class="align-middle text-center text-sm">1</td>
+          <td class="align-middle text-center text-sm">
+            AP PATERNO AP MATERNO NOMBRE
+          </td>
+
+          <td>
+            <!-- ng-model="calificaciones[$index].p1"
+              {{$horario-
+            />periodo->periodo1 ? '' : 'disabled'}} -->
+            <input
+              class="form-control formControl"
+              type="number"
+              step="0.1"
+              max="10"
+            />
+          </td>
+          <td>
+            <!-- ng-model="calificaciones[$index].ac1" {{$horario->periodo->periodo1 ? '' : 'disabled'}} -->
+            <select class="form-control formControl">
+              <option value=""></option>
+              <option value="ACREDITA (AC)">AC</option>
+              <option value="NO ACREDITA (NAC)">NAC</option>
+              <option value="NO TIENE DERECHO (NTD)">NTD</option>
+              <option value="NO PRESENTO (NP)">NP</option>
+            </select>
+          </td>
+          <td>
+            <!-- ng-model="calificaciones[$index].a1"
+              {{$horario-
+            />periodo->periodo1 ? '' : 'disabled'}} -->
+            <input class="form-control formControl" type="number" />
+          </td>
+
+          <td>
+            <!-- ng-model="calificaciones[$index].p2"
+              {{$horario-
+            />periodo->periodo2 ? '' : 'disabled'}} -->
+            <input
+              class="form-control formControl"
+              type="number"
+              step="0.1"
+              max="10"
+            />
+          </td>
+          <td>
+            <!-- ng-model="calificaciones[$index].ac2"
+              {{$horario-
+            >
+              periodo->periodo2 ? '' : 'disabled'}} -->
+            <select class="form-control formControl">
+              <option value=""></option>
+              <option value="ACREDITA (AC)">AC</option>
+              <option value="NO ACREDITA (NAC)">NAC</option>
+              <option value="NO TIENE DERECHO (NTD)">NTD</option>
+              <option value="NO PRESENTO (NP)">NP</option>
+            </select>
+          </td>
+          <td>
+            <!-- ng-model="calificaciones[$index].a2"
+              {{$horario-
+            />periodo->periodo2 ? '' : 'disabled'}} -->
+            <input class="form-control formControl" type="number" />
+          </td>
+
+          <td>
+            <!-- ng-model="calificaciones[$index].p3"
+              {{$horario-
+            />periodo->periodo3 ? '' : 'disabled'}}  -->
+            <input
+              class="form-control formControl"
+              type="number"
+              step="0.1"
+              max="10"
+            />
+          </td>
+          <td>
+            <!-- ng-model="calificaciones[$index].ac3"
+              {{$horario-
+            >
+              periodo->periodo3 ? '' : 'disabled'}} -->
+            <select class="form-control formControl">
+              <option value=""></option>
+              <option value="ACREDITA (AC)">AC</option>
+              <option value="NO ACREDITA (NAC)">NAC</option>
+              <option value="NO TIENE DERECHO (NTD)">NTD</option>
+              <option value="NO PRESENTO (NP)">NP</option>
+            </select>
+          </td>
+          <td>
+            <!-- ng-model="calificaciones[$index].a3"
+              {{$horario-
+            />periodo->periodo3 ? '' : 'disabled'}} -->
+            <input class="form-control formControl" type="number" />
+          </td>
+
+          <td class="align-middle text-center text-sm">
+            <b>0 en todo</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

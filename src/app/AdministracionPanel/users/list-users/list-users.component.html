@@ -1,0 +1,72 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12" style="margin-bottom: 1em">
+      <div class="row">
+        <label class="labelBold">Buscador:</label>
+
+        <div class="col-md-3 d-flex align-items-center">
+          <input class="form-control formControl" ng-model="buscador" />
+        </div>
+        <div class="col-md-2">
+          <div class="btn btn-default">
+            <img src="assets/Common/Buscar.svg" width="40px" alt="Buscar" />
+            Buscar
+          </div>
+        </div>
+        <a class="col-md-2">
+          <div class="btn btn-default" (click)="navigateToNewUser()">
+            <img src="assets/Common/Nuevo.svg" width="40px" alt="Nuevo" /> Nuevo
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12" style="margin-top: 2em">
+    <div class="table-responsive p-0">
+      <table class="table align-items-center mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th class="text-uppercase text-center text-sm">Nombre</th>
+            <th class="text-uppercase text-center text-sm">Usuario</th>
+            <th class="text-uppercase text-center text-sm">Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="align-middle text-center text-sm colorBlack">Nombre</td>
+            <td class="align-middle text-center text-sm colorBlack">emails</td>
+            <td class="align-middle text-center text-sm">
+              <a>
+                <div
+                  class="btn btn-default spaceBtn"
+                  (click)="navigateToEditUser()"
+                >
+                  <img
+                    src="assets/Common/Editar.svg"
+                    width="20px"
+                    alt="Editar"
+                  />
+                  <br />
+                  Editar
+                </div>
+              </a>
+
+              <div class="btn btn-default">
+                <img
+                  src="assets/Common/Eliminar.svg"
+                  width="20px"
+                  alt="Editar"
+                />
+                <br />
+                Eliminar
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- <dir-pagination-controls template-url="{{asset('pagination/dirPagination.tpl.html')}}" pagination-id="1" on-page-change="pageChanged(newPageNumber)">
+          </dir-pagination-controls> -->
+    </div>
+  </div>
+</div>

@@ -1,0 +1,314 @@
+<div class="container-fluid">
+  <!-- Backdrop -->
+  <div class="modal-backdrop" #modalBackdrop></div>
+
+  <!--MODAL DE REGISTRO -->
+  <div
+    class="modal"
+    id="modalHorario"
+    tabindex="-1"
+    role="dialog"
+    #modalHorario
+  >
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Nuevo Horario</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12 row">
+              <!-- ID OCULTO -->
+              <input id="idPeriodo" style="display: none" value="id1" />
+              <div class="col-md-4">
+                <label>Grupo:</label>
+                <select class="form-control formControl" required>
+                  <option value="grupoid">GRUPO A</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label>Materia:</label>
+                <select class="form-control formControl" required>
+                  <option value="12">MATERIA 1</option>
+                </select>
+              </div>
+              <div class="col-md-4">
+                <label>Docente:</label>
+                <select class="form-control formControl" required>
+                  <option value="123">El Peyro</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Dias de la semana -->
+            <div class="row">
+              <div class="col-md-4">
+                <label>Lunes:</label>
+                <input
+                  class="form-control formControl"
+                  placeholder="9:00am - 12:00pm"
+                />
+              </div>
+              <div class="col-md-4">
+                <label>Martes:</label>
+                <input
+                  class="form-control formControl"
+                  placeholder="9:00am - 12:00pm"
+                />
+              </div>
+              <div class="col-md-4">
+                <label>Miercoles:</label>
+                <input
+                  class="form-control formControl"
+                  placeholder="9:00am - 12:00pm"
+                />
+              </div>
+              <div class="col-md-4">
+                <label>Jueves:</label>
+                <input
+                  class="form-control formControl"
+                  placeholder="9:00am - 12:00pm"
+                />
+              </div>
+              <div class="col-md-4">
+                <label>Viernes:</label>
+                <input
+                  class="form-control formControl"
+                  placeholder="9:00am - 12:00pm"
+                />
+              </div>
+              <div class="col-md-4">
+                <label>Sabado:</label>
+                <input
+                  class="form-control formControl"
+                  placeholder="9:00am - 12:00pm"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            ng-click="registrarHorario()"
+          >
+            <img
+              src="assets/Common/Guardar.svg"
+              width="40px"
+              height="40px"
+              alt="Guardar"
+            />
+          </button>
+          <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+            <img
+              src="assets/Common/Cancelar.svg"
+              width="40px"
+              height="40px"
+              alt="Cancelar"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--MODAL DE CARGA DE ARCHIVO -->
+  <div
+    class="modal"
+    id="modalCargaArchivo"
+    tabindex="-1"
+    role="dialog"
+    #modalCargaArchivo
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <img
+              src="assets/Common/SubirArchivo.svg"
+              width="40px"
+              alt="Subir Archivo"
+            />
+            Carga de Horarios
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <label>Archivo:</label>
+              <input
+                class="form-control formControl"
+                type="file"
+                id="horario"
+                accept=".csv"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-12">
+            Descargue el archivo de ejemplo
+            <a
+              href="assets/Files/EjemploCargaHorariosPeriodosSemestrales.csv"
+              download="EjemploCargaHorariosPeriodosSemestrales.csv"
+            >
+              Aqui
+            </a>
+          </div>
+          <button
+            type="button"
+            class="btn btn-default"
+            ng-click="CargarHorario()"
+          >
+            <img src="assets/Common/Guardar.svg" width="40px" alt="Guardar" />
+            Guardar
+          </button>
+          <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+            <img src="assets/Common/Cancelar.svg" width="30px" alt="Cancelar" />
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="row">
+    <div class="col-md-4">
+      <label class="labelBold">Grupos:</label>
+      <select
+        class="form-control formControl"
+        ng-model="filtro.grupo"
+        ng-change="getHorarios()"
+      >
+        <option default value="TODOS">TODOS</option>
+        <option value="grupo-id">GRUPO 2</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="labelBold">Docentes:</label>
+      <select
+        class="form-control formControl"
+        ng-model="filtro.docente"
+        ng-change="getHorarios()"
+      >
+        <option default value="TODOS">TODOS</option>
+        <option value="docente-1">My Lord Oscar</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="labelBold">Materias:</label>
+      <select
+        class="form-control formControl"
+        ng-model="filtro.materia"
+        ng-change="getHorarios()"
+      >
+        <option default value="TODOS">TODAS</option>
+        <option value="SIN_ASIGNAR">SIN ASIGNAR</option>
+        <option value="materia-12">Matematicas</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 1rem">
+    <div
+      class="btn boton_flotante boton_flotante_nuevo"
+      data-bs-toggle="modal"
+      data-bs-target="#modalHorario"
+      (click)="showModal()"
+    >
+      <img src="assets/Common/Nuevo.svg" width="100%" alt="Periodo" /> Nuevo
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 1rem">
+    <div
+      class="btn boton_flotante boton_flotante_subir"
+      data-bs-toggle="modal"
+      data-bs-target="#modalCargaArchivo"
+      (click)="showModal()"
+    >
+      <img src="assets/Common/SubirArchivo.svg" width="100%" alt="Periodo" />
+      CSV
+    </div>
+  </div>
+
+  <div class="col-12 col-md-12">
+    <div class="row">
+      <div class="col-md-4 text-center misMaterias-card">
+        <div class="col-md-12">
+          <b>Materia:</b><br />
+          Matematicas
+        </div>
+        <div class="col-md-12">
+          <b>Docente:</b><br />
+          Oscar
+        </div>
+        <div class="col-md-12">
+          <b>Grupo:</b><br />
+          ABCD
+        </div>
+        <div class="col-md-12 row">
+          <div class="col-md-4">
+            <b>Lunes:</b><br />
+            lunes
+          </div>
+
+          <div class="col-md-4">
+            <b>Martes:</b><br />
+            Martes
+          </div>
+
+          <div class="col-md-4">
+            <b>Miercoles:</b><br />
+            Miercoles
+          </div>
+
+          <div class="col-md-4">
+            <b>Jueves:</b><br />
+            Jueves
+          </div>
+
+          <div class="col-md-4">
+            <b>Viernes:</b><br />
+            Viernes
+          </div>
+
+          <div class="col-md-4">
+            <b>Sabado:</b><br />
+            Sabado
+          </div>
+        </div>
+
+        <div class="col-md-12 row" style="margin-top: 1rem">
+          <div class="col-6">
+            <a (click)="navigateToQualificationsRegister()">
+              <div class="btn btn-default">
+                <img
+                  src="assets/Common/Calificaciones.svg"
+                  width="40px"
+                  alt="Calificaciones"
+                />
+                Calificaciones
+              </div>
+            </a>
+          </div>
+
+          <div class="col-6">
+            <a target="_blank">
+              <div class="btn btn-default" href>
+                <img
+                  src="assets/Common/PDF.svg"
+                  width="30px"
+                  alt="Calificaciones"
+                />
+                Lista Asistencia
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

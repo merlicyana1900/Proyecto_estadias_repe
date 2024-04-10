@@ -1,0 +1,93 @@
+<main class="body-class">
+  <section class="vh-100">
+    <div class="container-fluid h-custom">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-md-9 col-lg-6 col-xl-5">
+          <img
+            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+            class="img-fluid"
+          />
+        </div>
+        <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <div class="divider d-flex align-items-center my-4">
+              <img
+                src="../../../assets/img/DGETI_logo.svg.png"
+                class="img-fluid"
+                width="30%"
+              />
+            </div>
+
+            <div class="divider d-flex align-items-center my-4">
+              <div class="text-center">
+                <h2>Administrativos y Docentes</h2>
+              </div>
+            </div>
+
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label for="email" class="form-label">Correo:</label>
+              <input
+                type="email"
+                class="form-control form-control-lg"
+                formControlName="email"
+                autofocus
+                [ngClass]="{
+                  'is-invalid': submitted && getLoginForm['email'].errors
+                }"
+              />
+              @if (this.loginForm.get('email')?.errors?.['required']) {
+              <span class="invalid-feedback" role="alert">
+                <strong>Email requerido</strong>
+              </span>
+              } @else if(this.loginForm.get('email')?.errors?.['email']) {
+              <span class="invalid-feedback" role="alert">
+                <strong>Email invalido</strong>
+              </span>
+              }
+            </div>
+
+            <!-- Password input -->
+            <div class="form-outline mb-3">
+              <label for="password" class="form-label">Contraseña:</label>
+              <input
+                type="password"
+                class="form-control form-control-lg"
+                formControlName="password"
+                [ngClass]="{
+                  'is-invalid': submitted && getLoginForm['password'].errors
+                }"
+              />
+              @if (getLoginForm['password'].errors?.['required']) {
+              <span class="invalid-feedback" role="alert">
+                <strong>Contraseña requerida</strong>
+              </span>
+              } @else if (getLoginForm['password'].errors?.['minlength']) {
+              <span class="invalid-feedback" role="alert">
+                <strong>
+                  La contraseña debe contener al menos 6 caracteres.</strong
+                >
+              </span>
+              } @else if (getLoginForm['password'].errors?.['maxlength']) {
+              <span class="invalid-feedback" role="alert">
+                <strong>
+                  La contraseña debe contener al menos 40 caracteres.</strong
+                >
+              </span>
+              }
+            </div>
+
+            <div class="text-center text-lg-start mt-4 pt-2">
+              <button
+                type="submit"
+                class="btn btn-primary btn-lg paddingAccesoBtn"
+              >
+                Acceder
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,263 @@
+<div class="container-fluid">
+  <!-- Backdrop -->
+  <div class="modal-backdrop" #modalBackdrop></div>
+
+  <div
+    id="modalCambioMateria"
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    #modalCambioMateria
+  >
+    <div class="modal-dialog" role="document">
+      e
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cambio de Materia</h5>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Registro #1.</p>
+          <div class="col-md-12">
+            <label class="labelBold">Materia:</label>
+            <select
+              placeholder="Seleccione un alumno"
+              class="form-control"
+              id="buscadorMateria"
+            >
+              <option ng-repeat="a in extraHorarios track by $index" value="ID">
+                ESPECIALIDAD - TURNO - SEMESTRE - MATERIA - PEYRO -HORA - AULA -
+                DIA
+              </option>
+            </select>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="Actualizar()">
+            Guardar
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input id="id" value="1" style="display: none" />
+
+  <div class="container-fluid">
+    <div class="col-md-12 row">
+      <div class="col-md-3">
+        <label class="labelBold">Docente:</label>
+        <select class="form-control formControl">
+          <option value="1">Peyro</option>
+        </select>
+      </div>
+
+      <div class="col-md-3">
+        <label class="labelBold">Materia:</label>
+        <select class="form-control formControl" ng-model="materia">
+          <option value="">ESTADIAS</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label class="labelBold">Estatus:</label>
+        <select
+          class="form-control formControl"
+          ng-model="estatus"
+          ng-change="getMateriasRegistradas()"
+        >
+          <option value="Todas">Todas</option>
+          <option value="Pendiente">Pendiente</option>
+          <option value="Rechazada">Rechazada</option>
+          <option value="Registrada">Registrada</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <a target="_blank">
+          <div class="btn btn-default">
+            <img src="assets/Common/PDF.svg" width="40px" alt="PDF" />
+            Listas
+          </div>
+        </a>
+      </div>
+      <div class="col-md-2">
+        <a>
+          <div class="btn btn-default">
+            <img src="assets/Common/Excel.svg" width="40px" alt="Excel" />
+            Registros
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <div class="col-md-12 row" style="margin-top: 2em"></div>
+
+    <div class="col-md-12 row" style="margin-top: 2em">
+      <div class="col-md-5">
+        <label class="labelBold">Alumno:</label>
+        <select
+          placeholder="Seleccione una materia"
+          class="form-control"
+          id="alumnoNuevo"
+        >
+          <option ng-repeat="item in alumnos track by $index" value="CURP">
+            323213 - AP PAT AP MAT NOMBRE - INGENIERIA
+          </option>
+        </select>
+      </div>
+      <div class="col-md-5">
+        <label class="labelBold">Materia:</label>
+        <select
+          placeholder="Seleccione una materia"
+          class="form-control"
+          id="buscadorMateriaNueva"
+        >
+          <option value="ID">
+            ESPECIALIDAD - MATUTINO - SEM 1 - MATE - PEYRO - EN LA MAÑANA - AULA
+            2 - DIA LUNES
+          </option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <div
+          style="margin-top: 2em"
+          class="btn btn-default"
+          ng-click="Inscribir()"
+        >
+          <img src="assets/Common/Nuevo.svg" width="40px" alt="Inscribir" />
+          Inscribir
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 2em">
+      <div class="col-md-12 row">
+        <div class="col-md-5">
+          <label class="labelBold">Buscador:</label>
+          <select
+            ng-change="getMateriasRegistradas()"
+            ng-model="alumno.buscador"
+            placeholder="Seleccione un alumno"
+            class="form-control"
+            id="buscadorAlumnos"
+          >
+            <option value="CURP">AP PATERNO AP MATERNO NOMBRE</option>
+          </select>
+        </div>
+        <div class="col-md-1" style="margin-top: 2em">
+          <div class="btn btn-default" ng-click="getMateriasRegistradas()">
+            <img src="assets/Common/Buscar.svg" width="40px" alt="Buscar" />
+            Filtrar
+          </div>
+        </div>
+        <div class="col-md-1" style="margin-top: 2em">
+          <div class="btn btn-default" ng-click="limpiar()">
+            <img src="assets/Common/Limpiar.svg" width="40px" alt="Limpiar" />
+            Limpiar
+          </div>
+        </div>
+      </div>
+      Registros Totales: 1
+      <div class="table-responsive p-0">
+        <table class="table mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th class="text-uppercase text-sm">#</th>
+              <th class="text-uppercase text-sm">Alumno</th>
+              <th class="text-uppercase text-sm">Materia</th>
+              <th class="text-uppercase text-center text-sm">Estatus</th>
+              <th class="text-uppercase text-center text-sm">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1 - 1</td>
+              <td class="text-sm">
+                <b>No. Control:</b> 123<br />
+                <b>CURP:</b> AWDAWDAWDA21311<br />
+                <b>Nombre:</b> NOMBRE AP PATERNO AP MATERNO<br />
+              </td>
+
+              <td class="text-sm">
+                <b>Materia:</b> Bases de Datos<br />
+                <b>Docente:</b> Ivan Gonzalez Peyro<br />
+                <b>Hora:</b> A las 5 no mas no menos<br />
+                <b>Aula:</b> Aula 1<br />
+                <b>Dia:</b> Aqui va horario
+              </td>
+              <td class="align-middle text-center text-sm">
+                <!-- 'bg-gradient-pendiente'  'bg-gradient-revisado' -->
+                <span class="badge badge-sm bg-gradient-pendiente">
+                  Pendiente
+                </span>
+              </td>
+              <td class="align-middle text-center text-sm">
+                <div class="btn btn-default spaceBtn">
+                  <img
+                    src="assets/Common/Rechazar_Mano.svg"
+                    width="40px"
+                    alt="Rechazar"
+                  />
+                </div>
+                <div class="btn btn-default spaceBtn">
+                  <img
+                    src="assets/Common/Aprobar_Mano.svg"
+                    width="40px"
+                    alt="Aprobar"
+                  />
+                </div>
+
+                <a target="_blank">
+                  <div class="btn btn-default spaceBtn" ng-click="">
+                    <img
+                      src="assets/Common/Imprimir.svg"
+                      width="40px"
+                      alt="Imprimir"
+                    />
+                  </div>
+                </a>
+                <div
+                  class="btn btn-default spaceBtn"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalCambioMateria"
+                  (click)="showModal()"
+                >
+                  <img
+                    src="assets/Common/Editar.svg"
+                    width="40px"
+                    alt="Editar"
+                  />
+                </div>
+                <div
+                  class="btn btn-default"
+                  ng-click="EliminarMateria(materia.id)"
+                >
+                  <img
+                    src="assets/Common/Eliminar.svg"
+                    width="40px"
+                    alt="Eliminar"
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

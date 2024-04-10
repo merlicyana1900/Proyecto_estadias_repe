@@ -1,0 +1,390 @@
+<div class="container-fluid">
+  <!-- Backdrop -->
+  <div class="modal-backdrop" #modalBackdrop></div>
+
+  <div class="modal" tabindex="-1" role="dialog" id="ModalFoto" #ModalFoto>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cargar Foto - PONER AQUI CURP</h5>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <input
+            class="form-control formControl"
+            id="foto"
+            type="file"
+            accept=".jpg"
+          />
+        </div>
+        <div class="modal-footer">
+          <div
+            type="button"
+            class="btn btn-primary btn-red"
+            (click)="saveStudenImg()"
+          >
+            Guardar
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    id="modalOpciones"
+    #modalOpciones
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">AP PATERNO AP MATERNO NOMBRE</h5>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <div class="row" style="margin-top: 0.5em">
+            <div class="col-md-12">
+              <h4>Credencial</h4>
+            </div>
+
+            <div class="col-md-3 offset-md-3" ng-if="alumno.foto != null">
+              <div
+                class="btn btn-default"
+                ng-click="CredencialPreview(alumno.curp)"
+              >
+                <img
+                  src="assets/Common/Buscar.svg"
+                  width="40px"
+                  alt="Vista Previa"
+                />
+                Vista Previa
+              </div>
+            </div>
+
+            <div class="col-md-3 text-center" ng-if="alumno.foto != null">
+              <div class="btn btn-default" ng-click="Credencial(alumno.curp)">
+                <img
+                  src="assets/Common/Identificacion.svg"
+                  width="50px"
+                  alt="Credencial"
+                />
+                Credencial
+              </div>
+
+              <p>SIN IMPRIMIR</p>
+              <p>IMPRESA</p>
+            </div>
+          </div>
+
+          <div class="row" style="margin-top: 0.5em">
+            <div class="col-md-12">
+              <h4>Alumno</h4>
+            </div>
+
+            <div class="col-md-4">
+              <a>
+                <div class="btn btn-default" (click)="navigateToEditStudent()">
+                  <img
+                    src="assets/Common/Usuario.svg"
+                    width="50px"
+                    alt="Perfil"
+                  />
+                  Perfil
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4">
+              <a>
+                <div
+                  class="btn btn-default"
+                  (click)="navigateToReportsStudent()"
+                >
+                  <img
+                    src="assets/Common/Reportes.svg"
+                    width="40px"
+                    alt="Reportes"
+                  />
+                  Reportes
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4">
+              <a>
+                <div
+                  class="btn btn-default"
+                  (click)="navigateToProofsStudent()"
+                >
+                  <img
+                    src="assets/Common/Justificantes.svg"
+                    width="40px"
+                    alt="Justificantes"
+                  />
+                  Justificantes
+                </div>
+              </a>
+            </div>
+
+            <div class="col-md-4">
+              <a>
+                <div
+                  class="btn btn-default"
+                  (click)="navigateToLetterCommintment()"
+                >
+                  <img
+                    src="assets/Common/Firma.svg"
+                    width="40px"
+                    alt="CartaCompromiso"
+                  /><br />Cartas Compromiso
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12" style="margin-bottom: 1em">
+    <div class="row">
+      <div class="col-md-12">
+        <a (click)="navigateToNewStudent()">
+          <div class="btn btn-primary bg-gradient-revisado">
+            <i class="fas fa-user-plus"></i> Registrar Alumno
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12" style="margin-bottom: 1em">
+    <div class="row">
+      <div class="col-md-4">
+        <label>Buscador:</label>
+        <input class="form-control formControl" />
+      </div>
+
+      <div class="col-md-2">
+        <label>Especialidad:</label>
+        <select class="form-control formControl">
+          <option value="-1" selected>N/A</option>
+          <option value="Carrera 1">Carrera 1</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label>Generacion:</label>
+        <select
+          class="form-control formControl"
+          ng-model="generacion"
+          ng-change="getAlumnos()"
+        >
+          <option value="-1" selected>N/A</option>
+          <option value="generacion">generacion</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label>Foto:</label>
+        <select class="form-control formControl">
+          <option value="-1" selected>N/A</option>
+          <option value="0">Sin Foto</option>
+          <option value="1">Con Foto</option>
+        </select>
+      </div>
+
+      <div class="col-md-2">
+        <label>Credencial:</label>
+        <select class="form-control formControl">
+          <option value="-1" selected>N/A</option>
+          <option value="0">Primera Vez</option>
+          <option value="1">Renovación</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="row">
+      <!-- <dir-pagination-controls template-url="{{asset('pagination/dirPagination.tpl.html')}}" pagination-id="1" on-page-change="pageChanged(newPageNumber)">
+          </dir-pagination-controls> -->
+
+      <div class="col-md-4 card-alumno">
+        <div class="card-alumno-interno">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="row">
+                <div class="col-md-12 col-6">
+                  <img
+                    height="100px"
+                    width="100%"
+                    class="img-responsive fotoAlumno"
+                    src="assets/img/no_foto.png"
+                  />
+                  <!-- <img
+                    id=""
+                    ng-if="a.foto != null"
+                    height="100px"
+                    width="100%"
+                    class="img-responsive fotoAlumno"
+                    src=""
+                  /> -->
+                </div>
+
+                <div class="col-md-12">
+                  <div
+                    class="btn btn-info btn-block"
+                    data-bs-toggle="modal"
+                    data-bs-target="#ModalFoto"
+                    (click)="showModal()"
+                  >
+                    <i class="fas fa-image"></i> Cambiar
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <p>3123131</p>
+              <p><b>Un nombre</b></p>
+              <p>Una carrera</p>
+              <p>Un grupo</p>
+              <p>TURNO</p>
+            </div>
+          </div>
+
+          <div class="row alumno-opciones" style="margin-top: 0.5em">
+            <div class="col-md-12 text-center">
+              <label>Última Modificación</label>
+              <label>AQUI VA UNA FECHA</label>
+            </div>
+            <div class="col-md-12 text-center">
+              <div
+                class="btn btn-default"
+                data-bs-toggle="modal"
+                data-bs-target="#modalOpciones"
+                (click)="showModal()"
+              >
+                <img
+                  src="assets/Common/Opciones.svg"
+                  width="40px"
+                  alt="Más Opciones"
+                />
+                Más Opciones
+              </div>
+            </div>
+            <div class="col-md-12 text-center">
+              <!-- data-bs-target="#collapseExample@{{a.id}}" aria-controls="collapseExample@{{a.id}}" -->
+              <div
+                class="btn btn-default"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseExample"
+                aria-controls="collapseExample"
+                #collapsed
+              >
+                <img
+                  src="assets/Common/Identificacion.svg"
+                  width="40px"
+                  alt="Datos de Contacto"
+                />
+                Datos de Contacto
+              </div>
+            </div>
+            <!-- id="collapseExample@{{a.id}}" -->
+            <div class="col-md-12 collapse" #collapseShow>
+              <div class="card card-body">
+                <div class="row text-center">
+                  <div class="col-md-6">
+                    <label><b>Colonia:</b></label>
+                    <br />
+                    <p class="pContact">DAJDNWADN</p>
+                  </div>
+                  <div class="col-md-6">
+                    <label><b>Calle:</b></label>
+                    <br />
+                    <p class="pContact"></p>
+                  </div>
+
+                  <div class="col-md-6">
+                    <label><b>Correo:</b></label>
+                    <br />
+                    <p class="pContact"></p>
+                  </div>
+                  <div class="col-md-6">
+                    <label><b>Telefono:</b></label>
+                    <br />
+                    <p></p>
+                  </div>
+                  <div class="col-md-6">
+                    <label><b>Telefono Casa:</b></label>
+                    <br />
+                    <p class="pContact"></p>
+                  </div>
+                </div>
+
+                <div class="row text-center">
+                  <div class="col-md-6">
+                    <label class="labelBold">MADRE:</label>
+                    <br />
+                    <p class="pContact"></p>
+                    <label class="labelBold">TELEFONO:</label>
+                    <br />
+                    <p class="pContact"></p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labelBold">PADRE:</label>
+                    <br />
+                    <p class="pContact"></p>
+                    <label class="labelBold">TELEFONO:</label>
+                    <br />
+                    <p class="pContact"></p>
+                  </div>
+                </div>
+
+                <div class="row text-center">
+                  <div class="col-md-6">
+                    <label class="labelBold">Tutor 1:</label>
+                    <br />
+                    <p class="pContact"></p>
+                    <label class="labelBold">TELEFONO:</label>
+                    <br />
+                    <p class="pContact"></p>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="labelBold">Tutor 2:</label>
+                    <br />
+                    <p class="pContact"></p>
+                    <label class="labelBold">TELEFONO:</label>
+                    <br />
+                    <p class="pContact"></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--
+                  -->
+        </div>
+      </div>
+
+      <!-- <dir-pagination-controls template-url="{{asset('pagination/dirPagination.tpl.html')}}" pagination-id="1" on-page-change="pageChanged(newPageNumber)">
+          </dir-pagination-controls> -->
+    </div>
+  </div>
+</div>

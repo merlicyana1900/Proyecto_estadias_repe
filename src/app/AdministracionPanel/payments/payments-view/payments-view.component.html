@@ -1,0 +1,104 @@
+<div class="container-fluid px-4">
+  <div class="container-fluid text-center">
+    <div class="row g-3">
+      <div class="col SALDOS">
+        <b>TOTAL PENDIENTE</b><br />
+        {{ 0.0 | currency }}
+      </div>
+      <div class="col SALDOS">
+        <b>TOTAL POR VALIDAR</b><br />
+        {{ 0.0 | currency }}
+      </div>
+      <div class="col SALDOS">
+        <b>TOTAL PAGADO</b><br />
+        {{ 20.12 | currency }}
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid salto">
+    <div class="row">
+      <div class="col-5">
+        <label class="labelBold">Alumno:</label>
+        <select2
+          class="form-control formControl"
+          [overlay]="overlay"
+          placeholder="Seleccione o Busque un Alumno."
+          [data]="studentData"
+          [value]="studentValue"
+          resettable
+          noResultMessage="No se encontro na de na"
+          (update)="update($event)"
+        ></select2>
+      </div>
+      @if ( studentValue !== undefined ) {
+      <div class="col-3">
+        <label>Tipo Pago:</label>
+        <select class="form-control formControl">
+          <option value="PREINSCRIPCION">PREINSCRIPCION</option>
+          <option value="INTERSEMESTRAL">INTERSEMESTRAL</option>
+          <option value="EXTRAORDINARIO">EXTRAORDINARIO</option>
+          <option value="INSCRIPCION">INSCRIPCION</option>
+        </select>
+      </div>
+      <div class="col-2">
+        <label>Monto:</label>
+        <input
+          class="form-control formControl"
+          type="number"
+          step="0.1"
+          ng-model="alumno.monto"
+        />
+      </div>
+      <div class="col-2">
+        <div
+          style="margin-top: 2em"
+          class="btn btn-block btn-success"
+          ng-click="RegistrarPago()"
+        >
+          <i class="fas fa-plus"></i> Registrar
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+
+  @if (studentValue !== undefined) {
+  <div class="container salto">
+    <table class="table">
+      <thead>
+        <tr>
+          <th class="text-center text-sm">#Folio</th>
+          <th class="text-sm">CONCEPTO</th>
+          <th class="text-sm">MONTO</th>
+          <th class="text-sm">SEMESTRE</th>
+          <th class="text-center text-sm">ESTATUS</th>
+          <th class="text-center text-sm">ACCIONES</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="p in pagos">
+          <td class="align-middle text-center text-sm">1</td>
+          <td class="align-middle text-sm">INSCRIPCIÓN</td>
+          <td class="align-middle text-sm">{{ 20 | currency }}</td>
+          <th class="align-middle text-sm">Semestre 1</th>
+          <td class="align-middle text-center text-sm">
+            <!-- @{{inscr.estatus == 'Pendiente' ? 'bg-gradient-pendiente' : ''}} @{{inscr.estatus == 'Revisada' ? 'bg-gradient-revisado' : ''}} -->
+            <span class="badge badge-sm bg-gradient-revisado"> PAGADO </span>
+          </td>
+
+          <td class="align-middle text-center text-sm">
+            <div class="btn btn-success spaceBtn">
+              <i class="far fa-thumbs-up"></i>
+            </div>
+            <div class="btn btn-danger spaceBtn">
+              <i class="far fa-thumbs-down"></i>
+            </div>
+            <div class="btn btn-danger"><i class="fas fa-trash-alt"></i></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  }
+</div>

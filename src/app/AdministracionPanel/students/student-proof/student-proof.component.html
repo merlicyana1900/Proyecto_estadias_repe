@@ -1,0 +1,168 @@
+<div
+  class="container-fluid"
+  ng-controller="AlumnosController"
+  ng-init="InicializacionJustificantes()"
+>
+  <input id="id" style="display: none" value="" disabled />
+  <!-- Backdrop -->
+  <div class="modal-backdrop" #modalBackdrop></div>
+
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    id="ModalReporte"
+    #ModalReporte
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Nuevo Reporte</h5>
+          <button
+            type="button"
+            class="close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="labelBold">Motivo por:</label>
+              <select class="form-control formControl">
+                <option selected value="Servicios Escolares">
+                  Servicios Escolares
+                </option>
+                <option value="Salud">Salud</option>
+                <option value="Personales">Personales</option>
+                <option value="Familiares">Familiares</option>
+                <option value="Representación Escolar">
+                  Representación Escolar
+                </option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label class="labelBold">Dias a Justificar:</label>
+              <div id="dias"></div>
+            </div>
+
+            <div class="col-md-6">
+              <label class="labelBold">Horario de Faltas (Opcional):</label>
+              <div class="col-md-12">
+                <label class="labelBold">Hora Inicio:</label>
+                <input
+                  id="hora_inicio"
+                  type="time"
+                  class="form-control formControl"
+                />
+              </div>
+              <div class="col-md-12">
+                <label class="labelBold">Hora Fin:</label>
+                <input
+                  id="hora_fin"
+                  type="time"
+                  class="form-control formControl"
+                />
+              </div>
+            </div>
+
+            <div class="col-md-12">
+              <label class="labelBold">A Firmar por:</label>
+              <select class="form-control formControl" id="firmas" multiple>
+                <option value="">Firma 1</option>
+              </select>
+            </div>
+
+            <!-- se muestra con esta condicional ng-show="codigo != null" -->
+            <div class="col-md-12">
+              <label class="labelBold">Codigo de Verificación:</label>
+              <input class="form-control formControl" />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div type="button" class="btn btn-primary">Guardar</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-md-12">
+      <h4>AP PATERNO AP MATERNO NOMBRE</h4>
+    </div>
+  </div>
+
+  <div class="row" style="margin-bottom: 1em">
+    <div class="col-md-12">
+      <div
+        class="btn btn-success"
+        data-bs-toggle="modal"
+        data-bs-target="#ModalReporte"
+        (click)="showModal()"
+      >
+        <i class="fas fa-plus"></i> Registrar Nuevo
+      </div>
+    </div>
+  </div>
+
+  <div class="row table-responsive p-0">
+    <table class="table align-items-center mb-0">
+      <thead class="table-dark">
+        <tr>
+          <th class="text-uppercase text-center text-sm">#</th>
+          <th class="text-uppercase text-center text-sm">Motivo</th>
+          <th class="text-uppercase text-center text-sm">Dias</th>
+          <th class="text-uppercase text-center text-sm">Firmado Por</th>
+          <th class="text-uppercase text-center text-sm">Fecha Registro</th>
+          <th class="text-uppercase text-center text-sm">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="align-middle text-center text-sm">3</td>
+          <td class="align-middle text-sm"></td>
+          <td class="align-middle text-sm">
+            <ul>
+              <li>2</li>
+            </ul>
+          </td>
+          <td class="align-middle text-sm">
+            <ul>
+              <li>1</li>
+            </ul>
+          </td>
+          <td class="align-middle text-sm">12-03-2023</td>
+          <td class="align-middle text-center text-sm">
+            <a>
+              <div
+                class="btn btn-success spaceBtn"
+                data-bs-toggle="tooltip"
+                data-bs-placement="top"
+                title="Imprimir"
+              >
+                <i class="fas fa-print"></i>
+              </div>
+            </a>
+            <div
+              class="btn btn-danger"
+              data-bs-toggle="tooltip"
+              data-bs-placement="top"
+              title="Eliminar"
+            >
+              <i class="fas fa-trash"></i>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="12" class="text-center">
+            <h4>SIN REGISTROS</h4>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

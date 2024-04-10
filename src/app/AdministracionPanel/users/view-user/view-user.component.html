@@ -1,0 +1,677 @@
+<div class="container-fluid">
+  <div class="row" style="margin-top: 1rem">
+    <div class="btn boton_flotante boton_flotante_guadar">
+      <img src="assets/Common/Guardar.svg" width="100%" alt="Guardar" />
+      Guardar
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="row">
+      <input id="id" style="display: none" value="ids}" />
+      <div class="col-md-12">
+        <h4>Usuario:</h4>
+      </div>
+
+      <div class="col-md-4">
+        <label class="labelBold">Nombre</label>
+        <input
+          class="form-control formControl"
+          ng-model="usuario.name"
+          placeholder="Juan Perez"
+          required
+        />
+      </div>
+
+      <div class="col-md-4">
+        <label class="labelBold">Correo</label>
+        <input
+          type="email"
+          class="form-control formControl"
+          ng-model="usuario.email"
+          placeholder="ejemplo@ejemplo.com"
+          required
+        />
+      </div>
+
+      <div class="col-md-4">
+        <label class="labelBold">Contraseña</label>
+        <input
+          class="form-control formControl"
+          ng-model="usuario.contrasena"
+          placeholder="1234"
+        />
+      </div>
+
+      <div class="col-md-12" style="margin-top: 2em">
+        <h4>Permisos:</h4>
+      </div>
+
+      <!--ALUMNOS-->
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="labelBold">Alumnos</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_alumnos"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="editar_alumnos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Editar Alumno</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="registrar_alumnos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Registrar Alumno</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="credencial_alumnos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Generar Credencial</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="reportes_alumnos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Ver / Editar Reportes</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="justificantes_alumnos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Ver / Editar Justificantes</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="carta_compromiso_alumnos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Ver / Editar Cartas Compromiso</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="reporte_incidencias_alumnos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Ver / Editar Incidencias</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="datos_contacto_alumnos"
+          />
+          <label class="labelBold" class="form-check-label">
+            Ver Datos de Contacto
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="preview_credencial_alumnos"
+          />
+          <label class="labelBold" class="form-check-label">
+            Vista Previa de Credencial
+          </label>
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="lock_justificantes_alumnos"
+          />
+          <label class="labelBold" class="form-check-label">
+            Bloquear / Desbloquear Justificantes
+          </label>
+        </div>
+      </div>
+
+      <!--EXTRAORDINARIOS-->
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="labelBold">Examenes Extraordinarios</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_examenes_extra"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="lista_examenes_extra"
+          />
+          <label class="labelBold" class="form-check-label">Ver Lista</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="nuevo_examenes_extra"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Registrar Periodo</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="eliminar_examenes_extra"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Eliminar Periodo</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="cargar_examenes_extra"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Cargar Horarios</label
+          >
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="labelBold">Examenes Intersemestrales</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_examenes_inter"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="lista_examenes_inter"
+          />
+          <label class="labelBold" class="form-check-label">Ver Lista</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="nuevo_examenes_inter"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Registrar Periodo</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="eliminar_examenes_inter"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Eliminar Periodo</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="cargar_examenes_inter"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Cargar Horarios</label
+          >
+        </div>
+      </div>
+
+      <!--PREINSCRIPCIONES-->
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">PREINSCRIPCIONES</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_preinscripciones"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="registrar_preinscripciones"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Registrar Preinscripcion</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="editar_registro_preinscripciones"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Editar Registros</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="eliminar_preinscripciones"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Eliminar Preinscripcion</label
+          >
+        </div>
+      </div>
+
+      <!--PERIODOS SEMESTRALES-->
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="labelBold">PERIODOS SEMESTRALES</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_periodos_semestrales"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_periodos_horarios"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Ver Horarios de Periodo</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_periodos_horarios_carga"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Carga Masiva de Horario</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_periodos_horarios_nuevo"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Registrar Horario</label
+          >
+        </div>
+      </div>
+
+      <!--CALIFICACIONES-->
+
+      <div class="col-md-4">
+        <div class="form-group">
+          <label class="labelBold">CALIFICACIONES</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_calificaciones"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="editar_calificaciones_horarios"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Ver / Editar Calificaciones</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="habilitar_calificaciones"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Habilitar Calificaciones</label
+          >
+        </div>
+      </div>
+
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">Cargar Archivos</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_cargar_archivos"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="cali_cargar_archivos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Cargar Calificaciones</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="dhomper_cargar_archivos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Cargar Respaldo Dhomper</label
+          >
+        </div>
+      </div>
+
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">Usuarios</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_usuarios"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="nuevo_usuarios"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Registrar Usuario</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="eliminar_usuarios"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Eliminar Usuario</label
+          >
+        </div>
+      </div>
+
+      <!-- DOCENTES -->
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">Docentes</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_docentes"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="nuevo_docentes"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Registrar Docente</label
+          >
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="eliminar_docentes"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Eliminar Docente</label
+          >
+        </div>
+      </div>
+
+      <!--PAGOS-->
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">Pagos</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_pagos"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="editar_pagos"
+          />
+          <label class="labelBold" class="form-check-label">Editar Pagos</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="validar_pagos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Validar Pagos</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="eliminar_pagos"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Eliminar Pagos</label
+          >
+        </div>
+      </div>
+
+      <!--BIBLIOTECA-->
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">Biblioteca</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="biblioteca_ver"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="biblioteca_prestamo_libros"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Prestar Libros</label
+          >
+        </div>
+
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="biblioteca_catalogo_libros"
+          />
+          <label class="labelBold" class="form-check-label"
+            >Catalogo Libros</label
+          >
+        </div>
+      </div>
+
+      <!--REPORTES-->
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">Reportes</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_reportes"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+      </div>
+
+      <!--CONFIGURACION GLOBAL-->
+      <div class="col-md-4" style="margin-top: 2em">
+        <div class="form-group">
+          <label class="labelBold">Configuración Global</label>
+        </div>
+        <div class="form-check">
+          <input
+            name="permisos[]"
+            type="checkbox"
+            class="form-check-input"
+            value="ver_configuracion"
+          />
+          <label class="labelBold" class="form-check-label">Ver Menu</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

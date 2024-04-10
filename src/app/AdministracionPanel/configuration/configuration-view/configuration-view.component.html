@@ -1,0 +1,218 @@
+<div class="container-fluid px-4">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link active"
+        id="plataforma_alumnos_tab"
+        data-bs-toggle="tab"
+        data-bs-target="#plataforma_alumnos"
+        type="button"
+        role="tab"
+        aria-controls="plataforma_alumnos"
+        aria-selected="true"
+      >
+        Plataforma Alumnos
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="justificantes-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#justificantes"
+        type="button"
+        role="tab"
+        aria-controls="justificantes"
+        aria-selected="true"
+      >
+        Justificantes
+      </button>
+    </li>
+    <li class="nav-item" role="presentation">
+      <button
+        class="nav-link"
+        id="cartaCompromiso-tab"
+        data-bs-toggle="tab"
+        data-bs-target="#cartaCompromiso"
+        type="button"
+        role="tab"
+        aria-controls="cartaCompromiso"
+        aria-selected="true"
+      >
+        Cartas Compromiso
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div
+      class="tab-pane fade show active"
+      id="plataforma_alumnos"
+      role="tabpanel"
+      aria-labelledby="plataforma_alumnos_tab"
+    >
+      <div class="row pt-3">
+        <div class="col-12">
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              ng-model="plataformaAlumnos.data.informacionPersonal"
+            />
+            <label class="form-check-label">Edición de Datos Personales</label>
+          </div>
+
+          <div class="form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              ng-model="plataformaAlumnos.data.pagoEnLinea"
+            />
+            <label class="form-check-label">Pago en Linea</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="justificantes"
+      role="tabpanel"
+      aria-labelledby="justificantes-tab"
+    >
+      <!-- Firmas -->
+      <div class="row pt-3">
+        <div class="col-12">
+          <h4>Firmas para Justificantes</h4>
+        </div>
+        <div class="col-12 expacio row">
+          <div class="col-8">
+            <input
+              class="form-control formControl"
+              placeholder="Nombre / Puesto"
+              type="text"
+              id="nombreJustificante"
+            />
+          </div>
+          <div class="col-4">
+            <button
+              class="btn btn-secondary"
+              ng-click="AgregarFirmaJustificante()"
+            >
+              Agregar
+            </button>
+          </div>
+        </div>
+
+        <div class="col-12 espacio">
+          <table class="table align-items-center mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th class="text-uppercase text-center text-sm">Nombre</th>
+                <th class="text-uppercase text-center text-sm">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                ng-repeat="(index, a) in configuracion.alumnos.firmantesJustificantes"
+              >
+                <td class="align-middle text-center text-sm">1</td>
+                <td class="align-middle text-center text-sm">
+                  <button
+                    class="btn btn-danger"
+                    ng-click="EliminarFirmaJustificante(index)"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+              <tr
+                ng-show="
+                  configuracion.alumnos.firmantesJustificantes.length <= 0
+                "
+              >
+                <td colspan="2" class="align-middle text-center text-sm">
+                  Sin Datos
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="cartaCompromiso"
+      role="tabpanel"
+      aria-labelledby="cartaCompromiso-tab"
+    >
+      <!-- Firmas -->
+      <div class="row pt-3">
+        <div class="col-12">
+          <h4>Firmas para Cartas Compromiso</h4>
+        </div>
+        <div class="col-12 espacio row">
+          <div class="col-8">
+            <input
+              class="form-control formControl"
+              placeholder="Nombre / Puesto"
+              type="text"
+              id="nombreCartaCompromiso"
+            />
+          </div>
+          <div class="col-4">
+            <button
+              class="btn btn-secondary"
+              ng-click="AgregarFirmaCartaCompromiso()"
+            >
+              Agregar
+            </button>
+          </div>
+        </div>
+
+        <div class="col-12 espacio">
+          <table class="table align-items-center mb-0">
+            <thead class="table-dark">
+              <tr>
+                <th class="text-uppercase text-center text-sm">Nombre</th>
+                <th class="text-uppercase text-center text-sm">Acciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                ng-repeat="(index, a) in configuracion.alumnos.firmantesCartaCompromiso"
+              >
+                <td class="align-middle text-center text-sm">2</td>
+                <td class="align-middle text-center text-sm">
+                  <button
+                    class="btn btn-danger"
+                    ng-click="EliminarFirmaCartaCompromiso(index)"
+                  >
+                    Eliminar
+                  </button>
+                </td>
+              </tr>
+              <tr
+                ng-show="
+                  configuracion.alumnos.firmantesCartaCompromiso.length <= 0
+                "
+              >
+                <td colspan="2" class="align-middle text-center text-sm">
+                  Sin Datos
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" style="margin-top: 1rem">
+    <div
+      class="btn boton_flotante boton_flotante_guadar"
+      ng-click="GuardarConfiguracion()"
+    >
+      <img src="assets/Common/Guardar.svg" width="100%" alt="Guardar" />
+      Guardar
+    </div>
+  </div>
+</div>

@@ -1,0 +1,553 @@
+<div class="container-fluid">
+  <div class="row" style="margin-top: 1rem">
+    <div
+      class="btn boton_flotante boton_flotante_guadar"
+      ng-click="GuardarAlumno()"
+    >
+      <img src="assets/Common/Guardar.svg" width="100%" alt="Guardar" />
+      Guardar
+    </div>
+  </div>
+
+  <!--Principal Info-->
+  <div class="col-md-12 row card-alumno">
+    <!--Datos de Contacto -->
+    <div class="col-md-12">
+      <h3 class="text-center">Datos de Alumno</h3>
+    </div>
+
+    <div class="col-md-2">
+      <img
+        height="200px"
+        width="200px"
+        class="img-responsive fotoAlumno"
+        src="assets/img/no_foto.png"
+      />
+      <!-- <img
+        ng-if="alumno.foto != null"
+        height="200px"
+        width="200px"
+        class="img-responsive"
+        src=""
+      /> -->
+      <!--<div class="btn btn-secondary btn-block"><i class="fas fa-camera"></i> Cambiar Foto</div>-->
+    </div>
+
+    <div class="col-md-10 row">
+      <input id="id" class="form-control formControl" style="display: none" />
+      <div class="col-md-4 offset-md-2">
+        <label class="labelBold">No. Control / Matrícula:</label>
+
+        @if (isNewStudent) {
+        <input class="form-control formControl" required />
+        }@else {
+        <input class="form-control formControl" required disabled />
+        }
+      </div>
+      <div class="col-md-4">
+        <label class="labelBold">Curp:</label>
+
+        @if (isNewStudent) {
+        <input
+          id="curp"
+          class="form-control formControl"
+          maxlength="18"
+          required
+        />
+        }@else {
+        <input
+          id="curp"
+          class="form-control formControl"
+          maxlength="18"
+          required
+          disabled
+        />
+        }
+      </div>
+
+      <div class="col-md-4">
+        <label class="labelBold">Apellido Paterno:</label>
+        <input class="form-control formControl" ng-model="alumno.paterno" />
+      </div>
+      <div class="col-md-4">
+        <label class="labelBold">Apellido Materno:</label>
+        <input class="form-control formControl" ng-model="alumno.materno" />
+      </div>
+      <div class="col-md-4">
+        <label class="labelBold">Nombre(s):</label>
+        <input class="form-control formControl" ng-model="alumno.nombre" />
+      </div>
+
+      <div class="col-md-2">
+        <label class="labelBold">Semestre:</label>
+        <input class="form-control formControl" ng-model="alumno.semestre" />
+      </div>
+      <div class="col-md-2">
+        <label class="labelBold">Grupo:</label>
+        <input class="form-control formControl" ng-model="alumno.grupo" />
+      </div>
+      <div class="col-md-2">
+        <label class="labelBold">Turno:</label>
+        <input class="form-control formControl" ng-model="alumno.turno" />
+      </div>
+      <div class="col-md-6">
+        <label class="labelBold">Especialidad:</label>
+        <input class="form-control formControl" ng-model="alumno.carrera" />
+      </div>
+    </div>
+  </div>
+
+  <!--Contacto Emergencia Info-->
+  <div class="col-md-12 row card-alumno">
+    <div class="col-md-12">
+      <h3 class="text-center">Datos de Contacto</h3>
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">Correo Personal:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.correo"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">Colonia/Fraccionamiento:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.colonia"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">Calle:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.calle"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">CP:</label>
+      <input class="form-control formControl" ng-model="alumno.contacto.cp" />
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">Telefono Fijo:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.tel_fijo"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">Telefono Celular:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.tel_cel"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <label class="labelBold">Padre:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.padre_nombre"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <label class="labelBold">Telefono:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.padre_tel"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <label class="labelBold">Madre:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.madre_nombre"
+      />
+    </div>
+
+    <div class="col-md-6">
+      <label class="labelBold">Telefono:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.contacto.madre_tel"
+      />
+    </div>
+  </div>
+
+  <div class="col-md-12 row card-alumno">
+    <div class="col-md-12">
+      <h3 class="text-center">Datos Fisicos y de Salud</h3>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Talla:</label>
+      <input class="form-control formControl" ng-model="alumno.salud.talla" />
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Peso:</label>
+      <input class="form-control formControl" ng-model="alumno.salud.peso" />
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Estatura:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.estatura"
+      />
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Tipo Sangre:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tipo_sangre"
+      />
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Baja Visión:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.baja_vision"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Lentes:</label>
+      <select class="form-control formControl" ng-model="alumno.salud.lentes">
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Epilepsia:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.epilepsia"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Problemas de Aprendizaje:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.problemas_aprendizaje"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Discapacidad Motriz:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.discapacidad_motriz"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Sobrepeso:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.sobrepeso"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Diabetes:</label>
+      <select class="form-control formControl" ng-model="alumno.salud.diabetes">
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Pie Plano:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.pie_plano"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Protesis:</label>
+      <select class="form-control formControl" ng-model="alumno.salud.protesis">
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Debilidad Auditiva:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.debilidad_auditiva"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Hipertension:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.hipertension"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Empleo:</label>
+      <select class="form-control formControl" ng-model="alumno.salud.empleo">
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Hijos:</label>
+      <select class="form-control formControl" ng-model="alumno.salud.hijos">
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-2">
+      <label class="labelBold">Pie Plano:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.pie_plano"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Alergias:</label>
+      <textarea
+        class="form-control formControl"
+        ng-model="alumno.salud.alergias"
+      ></textarea>
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Aptitudes Sobresalientes:</label>
+      <textarea
+        class="form-control formControl"
+        ng-model="alumno.salud.aptitudes_sobresalientes"
+      ></textarea>
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Deportes:</label>
+      <textarea class="form-control formControl">Futbol</textarea>
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Tratamientos Medicos:</label>
+      <textarea
+        class="form-control formControl"
+        ng-model="alumno.salud.tratamiento_medico"
+      ></textarea>
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Otras Enfermedades:</label>
+      <textarea
+        class="form-control formControl"
+        ng-model="alumno.salud.otras_enfermedades"
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="col-md-12 row card-alumno">
+    <div class="col-md-12">
+      <h3 class="text-center">Datos para Atención Medica</h3>
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">Protegido:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.protegido"
+      >
+        <option ng-value="1">Si</option>
+        <option ng-value="0">No</option>
+      </select>
+    </div>
+    <div class="col-md-4">
+      <label class="labelBold">No. Seguro:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.no_seguro"
+      />
+    </div>
+
+    <div class="col-md-4">
+      <label class="labelBold">Institución:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.institucion"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Tutor 1:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor1_nombre"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Trabajo:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor1_trabajo"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Número:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor1_numero"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Parentesco:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor1_parentesco"
+      >
+        <option value="Padre">Padre</option>
+        <option value="Madre">Madre</option>
+        <option value="Tio">Tio</option>
+        <option value="Tia">Tia</option>
+        <option value="Abuelo">Abuelo</option>
+        <option value="Abuela">Abuela</option>
+        <option value="Hermano">Hermano</option>
+        <option value="Hermana">Hermana</option>
+        <option value="Otro">Otro</option>
+      </select>
+      <!--<input class="form-control formControl" ng-model="alumno.salud.tutor1_parentesco" />-->
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Tutor 2:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor2_nombre"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Trabajo:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor2_trabajo"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Número:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor2_numero"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Parentesco:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor2_parentesco"
+      >
+        <option value="Padre">Padre</option>
+        <option value="Madre">Madre</option>
+        <option value="Tio">Tio</option>
+        <option value="Tia">Tia</option>
+        <option value="Abuelo">Abuelo</option>
+        <option value="Abuela">Abuela</option>
+        <option value="Hermano">Hermano</option>
+        <option value="Hermana">Hermana</option>
+        <option value="Otro">Otro</option>
+      </select>
+      <!--<input class="form-control formControl" ng-model="alumno.salud.tutor2_parentesco" />-->
+    </div>
+
+    <!-- TUTOT 3-->
+    <div class="col-md-3">
+      <label class="labelBold">Tutor 3:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor3_nombre"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Trabajo:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor3_trabajo"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Número:</label>
+      <input
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor3_numero"
+      />
+    </div>
+
+    <div class="col-md-3">
+      <label class="labelBold">Parentesco:</label>
+      <select
+        class="form-control formControl"
+        ng-model="alumno.salud.tutor3_parentesco"
+      >
+        <option value="Padre">Padre</option>
+        <option value="Madre">Madre</option>
+        <option value="Tio">Tio</option>
+        <option value="Tia">Tia</option>
+        <option value="Abuelo">Abuelo</option>
+        <option value="Abuela">Abuela</option>
+        <option value="Hermano">Hermano</option>
+        <option value="Hermana">Hermana</option>
+        <option value="Otro">Otro</option>
+      </select>
+      <!--<input class="form-control formControl" ng-model="alumno.salud.tutor3_parentesco" />-->
+    </div>
+  </div>
+</div>

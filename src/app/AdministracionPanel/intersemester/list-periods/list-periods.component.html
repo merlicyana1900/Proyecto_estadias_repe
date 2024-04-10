@@ -1,0 +1,313 @@
+<div class="container-fluid">
+  <!-- Backdrop -->
+  <div class="modal-backdrop" #modalBackdrop></div>
+
+  <div
+    class="modal"
+    id="modalExtraHorarios"
+    tabindex="-1"
+    role="dialog"
+    #modalExtraHorarios
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <img
+              src="assets/Common/SubirArchivo.svg"
+              width="40px"
+              alt="Subir Archivo"
+            />
+            Carga de Horarios
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="labelBold" class="labelBold">Archivo:</label>
+              <input
+                class="form-control formControl"
+                type="file"
+                id="horario"
+                accept=".csv"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default">
+            <img src="assets/Common/Guardar.svg" width="40px" alt="Guardar" />
+            Guardar
+          </button>
+          <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+            <img src="assets/Common/Cancelar.svg" width="40px" alt="Cancelar" />
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="modalExtra" tabindex="-1" role="dialog" #modalExtra>
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <img
+              src="assets/Common/Preinscripciones/Nuevo_Periodo.svg"
+              width="40px"
+              alt="Periodo"
+            />
+            {{ modalTitle }}
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <label class="labelBold">Titulo:</label>
+              <input class="form-control formControl" />
+            </div>
+            <div class="col-md-12">
+              <label class="labelBold">Instrucciones:</label>
+              <textarea
+                class="form-control formControl"
+                ng-model="instrucciones"
+              ></textarea>
+            </div>
+
+            <div class="col-md-6">
+              <label class="labelBold">Periodo Semestral:</label>
+              <input class="form-control formControl" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="labelBold">Periodo SISEEMS:</label>
+              <input class="form-control formControl" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="labelBold">Fecha Inicio:</label>
+              <!-- min="{{ fechaMin | date : 'yyyy-MM-dd' }}" -->
+
+              <input class="form-control formControl" type="date" value="" />
+            </div>
+
+            <div class="col-md-6">
+              <label class="labelBold">Fecha Fin:</label>
+              <input class="form-control formControl" type="date" value="" />
+            </div>
+
+            <div class="col-md-8 offset-md-2">
+              <label class="labelBold">Fecha Descarga PDF:</label>
+              <input
+                id="fechaPDF"
+                class="form-control formControl"
+                type="datetime-local"
+                value=""
+              />
+            </div>
+          </div>
+          <div class="modal-footer mt-3 pb-0">
+            <button type="button" class="btn btn-default">
+              <img src="assets/Common/Guardar.svg" width="40px" alt="Guardar" />
+            </button>
+            <button
+              type="button"
+              class="btn btn-default"
+              data-bs-dismiss="modal"
+            >
+              <img
+                src="assets/Common/Cancelar.svg"
+                width="40px"
+                alt="Cancelar"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <div class="row">
+          <div class="col-md-6">
+            <h4>Periodos</h4>
+          </div>
+
+          <div class="col-md-6 text-right">
+            <div
+              class="btn btn-default"
+              data-bs-toggle="modal"
+              data-bs-target="#modalExtra"
+              (click)="showModal(true)"
+            >
+              <img
+                src="assets/Common/Preinscripciones/Nuevo_Periodo.svg"
+                width="40px"
+                alt="Periodo"
+              />
+              Nuevo
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-body row">
+      <div class="col-md-4 text-center OpcionesEstatico custom-cards">
+        <div class="shadow-card">
+          <div class="col-md-12 row">
+            <div class="col-md-6">
+              <b>Fecha Inicio:</b><br />
+              fechaInicio
+            </div>
+            <div class="col-md-6 text-right">
+              <b>Fecha Fin:</b><br />
+              fechaFin
+            </div>
+          </div>
+          <div class="col-md-12 OpcionesTexto">
+            <b>titulo</b>
+          </div>
+          <div class="col-md-12">
+            <img src="assets/Common/Examen.svg" width="60%" alt="Editar" />
+          </div>
+
+          <div class="row extra-botones">
+            <div class="col-12 row">
+              <div class="col-12 col-sm-6 col-md-3">
+                <a>
+                  <div class="btn btn-default" (click)="navigateToViewPeriod()">
+                    <img src="assets/Common/Ver.svg" width="30px" alt="Ver" />
+                  </div>
+                </a>
+              </div>
+              <div class="col-12 col-sm-6 col-md-3">
+                <div class="btn btn-default">
+                  <img
+                    src="assets/Common/CalendarioHora.svg"
+                    width="30px"
+                    alt="Calendario Horarios"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-3">
+                <div
+                  class="btn btn-default"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalExtraHorarios"
+                  (click)="showModal()"
+                >
+                  <img
+                    src="assets/Common/SubirArchivo.svg"
+                    width="30px"
+                    alt="Subir Archivo"
+                  />
+                </div>
+              </div>
+              <div class="col-12 col-sm-6 col-md-3">
+                <div
+                  class="btn btn-default"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalExtra"
+                  (click)="showModal(false)"
+                >
+                  <img
+                    src="assets/Common/Editar.svg"
+                    width="30px"
+                    alt="Editar"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="col-12 row mt-2">
+              <div class="col-12 col-sm-6 col-md-3">
+                <div class="btn btn-default">
+                  <img
+                    src="assets/Common/Eliminar.svg"
+                    width="30px"
+                    alt="Eliminar"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <h5>Horarios #1</h5>
+      <div class="container row">
+        <div class="col-md-8 d-flex align-items-center">
+          <input
+            class="form-control formControl"
+            id="Buscador"
+            placeholder="Busqueda por Docente"
+          />
+        </div>
+        <div class="col-md-2">
+          <div class="btn btn-default btn-block btn-lg">
+            <img src="assets/Common/Buscar.svg" width="40px" alt="Buscar" />
+            Filtrar
+          </div>
+        </div>
+        <div class="col-md-2">
+          <div class="btn btn-default btn-block btn-lg">
+            <img src="assets/Common/Limpiar.svg" width="40px" alt="Limpiar" />
+            Limpiar
+          </div>
+        </div>
+      </div>
+      <div class="table-responsive pt-3">
+        <table class="table mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th class="text-uppercase text-sm">Especialidad</th>
+              <th class="text-uppercase text-sm">Turno</th>
+              <th class="text-uppercase text-sm">Semestre</th>
+              <th class="text-uppercase text-sm">Materia</th>
+              <th class="text-uppercase text-sm">Docente</th>
+              <th class="text-uppercase text-sm">Horario</th>
+              <th class="text-uppercase text-sm">Grupo</th>
+              <th class="text-uppercase text-sm">Dia</th>
+              <th class="text-uppercase text-sm">Limite</th>
+              <th class="text-uppercase text-sm">Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- <tr dir-paginate="h in extraHorarios | itemsPerPage: pageSize" total-items="extraHorarios_count" current-page="currentPage" pagination-id="1"> -->
+            <tr>
+              <td class="align-middle">ESPECIALIDAD</td>
+              <td class="align-middle">TURNO</td>
+              <td class="align-middle">SEMESTRE</td>
+              <td class="align-middle">MATERIA</td>
+              <td class="align-middle">DOCENTE</td>
+              <td class="align-middle">HORA</td>
+              <td class="align-middle">AULA</td>
+              <td class="align-middle">DIA</td>
+              <td class="align-middle">lIMITE</td>
+              <td class="align-middle">
+                <div class="btn btn-default">
+                  <img
+                    src="assets/Common/Eliminar.svg"
+                    width="40px"
+                    alt="Eliminar"
+                  />
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <dir-pagination-controls template-url="{{asset('pagination/dirPagination.tpl.html')}}" pagination-id="1" on-page-change="pageChanged(newPageNumber)">
+            </dir-pagination-controls> -->
+      </div>
+    </div>
+
+    <div class="col-md-12">
+      <h4>Aun no existen horarios cargados.</h4>
+    </div>
+  </div>
+</div>

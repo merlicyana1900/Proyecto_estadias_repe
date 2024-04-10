@@ -1,0 +1,247 @@
+<div class="container-fluid">
+  <!-- Backdrop -->
+  <div class="modal-backdrop" #modalBackdrop></div>
+
+  <!-- Modal para cargar folio -->
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    id="CargaFolioModal"
+    #CargaFolioModal
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <i class="fas fa-upload"></i> Carga de Folios
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                id="archivoFolios"
+                class="form-control formControl"
+                type="file"
+                accept=".csv"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <div class="col-md-12">
+            Descargue el archivo de ejemplo
+            <a
+              href="assets/Files/EjemploCargaPreinscripcionesFolio.csv"
+              download="EjemploCargaPreinscripcionesFolio.csv"
+              >Aqui</a
+            >
+          </div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            ng-click="CargarArchivoFolios()"
+          >
+            <i class="fas fa-cloud-upload-alt"></i> Cargar
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            <i class="fas fa-window-close"></i> Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal para cargar resultados -->
+  <div
+    class="modal"
+    tabindex="-1"
+    role="dialog"
+    id="CargaResultadosModal"
+    #CargaResultadosModal
+  >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">
+            <i class="fas fa-upload"></i> Carga de Lista de Resultados
+          </h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <input
+                id="archivoResultados"
+                class="form-control formControl"
+                type="file"
+                accept=".csv"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <div class="col-md-12">
+            Descargue el archivo de ejemplo
+            <a
+              href="assets/Files/EjemploCargaPreinscripcionesResultados.csv"
+              download="EjemploCargaPreinscripcionesResultados.csv"
+              >Aqui</a
+            >
+          </div>
+          <button type="button" class="btn btn-primary">
+            <i class="fas fa-cloud-upload-alt"></i> Cargar
+          </button>
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            <i class="fas fa-window-close"></i> Cerrar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <input id="id" value="" style="display: none" />
+
+  <div class="container-fluid">
+    <div class="col-12 row" style="margin-top: 2em">
+      <div class="col-3">
+        <a>
+          <div class="btn btn-default">
+            <img src="assets/Common/Excel.svg" width="40px" /> Registros
+          </div>
+        </a>
+      </div>
+
+      <div class="col-3">
+        <a target="_blank">
+          <div class="btn btn-default">
+            <img src="assets/Common/PDF.svg" width="40px" /> Listas
+          </div>
+        </a>
+      </div>
+
+      <div
+        class="col-3"
+        data-bs-toggle="modal"
+        data-bs-target="#CargaFolioModal"
+      >
+        <div class="btn btn-default" (click)="showModal()">
+          <img src="assets/Common/SubirArchivo.svg" width="40px" />
+          Cargar Folios
+        </div>
+      </div>
+
+      <div
+        class="col-3"
+        data-bs-toggle="modal"
+        data-bs-target="#CargaResultadosModal"
+      >
+        <div class="btn btn-default" (click)="showModal()">
+          <img src="assets/Common/SubirArchivo.svg" width="40px" /> Cargar Lista
+          Resultados
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-12 row" style="margin-top: 2em">
+      <div class="col-md-4">
+        <label>Filtro</label>
+        <input
+          class="form-control formControl"
+          placeholder="No. Solicitud, curp, apellidos, nombre"
+        />
+      </div>
+    </div>
+
+    <div class="col-md-12" style="margin-top: 2em">Registros Totales: 1</div>
+
+    <div class="col-md-12" style="margin-top: 2em">
+      <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+          <thead class="table-dark">
+            <tr>
+              <th class="text-uppercase text-center text-sm">#</th>
+              <th class="text-uppercase text-center text-sm">#Ceneval</th>
+              <th class="text-uppercase text-center text-sm">CURP</th>
+              <th class="text-uppercase text-center text-sm">Nombre</th>
+              <th class="text-uppercase text-center text-sm">Fecha Registro</th>
+              <th class="text-uppercase text-center text-sm">Estatus</th>
+              <th class="text-uppercase text-center text-sm">Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="align-middle text-center text-sm">1</td>
+              <td class="align-middle text-center text-sm">12</td>
+              <td class="align-middle text-center text-sm">DAWDAWDA</td>
+              <td class="align-middle text-center text-sm">
+                NOMBRE AP PATERNO AP MATERNO
+              </td>
+              <td class="align-middle text-center text-sm">Hoy mero</td>
+              <td class="align-middle text-center text-sm">
+                <!-- @{{inscr.estatus == 'Pendiente' ? 'bg-gradient-pendiente' : ''}} @{{inscr.estatus == 'Revisada' ? 'bg-gradient-revisado' : ''}} -->
+                <span class="badge badge-sm bg-gradient-pendiente">
+                  Estatus
+                </span>
+              </td>
+              <td class="align-middle text-center text-sm">
+                <a
+                  class="text-secondary font-weight-bold text-xs"
+                  target="_blank"
+                >
+                  <div class="btn btn-default spaceBtn">
+                    <img
+                      src="assets/Common/Documento.svg"
+                      width="30px"
+                      alt="Imprimir"
+                    />
+                    <!--Solicitud-->
+                  </div>
+                </a>
+                <a
+                  class="text-secondary font-weight-bold text-xs"
+                  target="_blank"
+                >
+                  <div class="btn btn-default spaceBtn">
+                    <img
+                      src="assets/Common/Editar.svg"
+                      width="30px"
+                      alt="Editar"
+                    />
+                    <!--Editar-->
+                  </div>
+                </a>
+                <div class="btn btn-default spaceBtn">
+                  <img
+                    src="assets/Common/Aprobar_Mano.svg"
+                    width="30px"
+                    alt="Imprimir"
+                  />
+                  <!--Confirmar-->
+                </div>
+                <a class="text-secondary font-weight-bold text-xs">
+                  <div class="btn btn-default">
+                    <img
+                      src="assets/Common/Imprimir.svg"
+                      width="30px"
+                      alt="Imprimir"
+                    />
+                  </div>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

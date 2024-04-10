@@ -1,0 +1,401 @@
+<div class="dash g-sidenav-show bg-gray-100" #dash>
+  <!-- Cambio de contraseña -->
+  <div class="modal" id="modalCambioContrasena" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Cambio de contraseña</h5>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="form-group">
+                <label for="exampleInputEmail1">Contraseña Actual</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  ng-model="cambioContrasena.contrasenaActual"
+                  placeholder="Contraseña Actual"
+                />
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Contraseña Nueva</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  ng-model="cambioContrasena.contrasenaNueva"
+                  placeholder="Contraseña Nueva"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-default"
+            ng-click="cambiarPassword()"
+          >
+            <img
+              src="../../../assets/Common/Guardar.svg"
+              width="40px"
+              alt="Guardar"
+            />
+            Guardar
+          </button>
+          <button type="button" class="btn btn-default" data-bs-dismiss="modal">
+            <img
+              src="../../../assets/Common/Cancelar.svg'"
+              width="30px"
+              alt="Cancelar"
+            />
+            Cancelar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <aside
+    class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 bg-gradient-dark"
+    id="sidenav-main"
+    #sidenavmain
+  >
+    <div class="sidenav-header">
+      <i
+        class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
+        aria-hidden="true"
+        id="iconSidenav"
+        #iconSidenav
+      ></i>
+      <a
+        class="navbar-brand m-0 text-center"
+        href="https://gmstore.com.mx"
+        target="_blank"
+      >
+        <img src="" class="navbar-brand-img h-100" alt="main_logo" />
+        <br />
+        <span class="ms-1 font-weight-bold text-white">Plataforma</span>
+      </a>
+    </div>
+
+    <hr class="horizontal light mt-0 mb-2" />
+
+    <div class="collapse navbar-collapse w-auto" id="sidenav-collapse-main">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a
+            class="nav-link text-white cursor-pointer"
+            routerLink="/dashboard/home"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">home</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Inicio</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white cursor-pointer"
+            routerLink="/dashboard/students"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">people</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Alumnos</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            class="nav-link text-white cursor-pointer"
+            routerLink="/dashboard/extraordinarytests"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">description</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Examenes Extraordinarios</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/intersemestertests"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">description</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Examenes Intersemestrales</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/preenrollment"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">description</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Preinscripciones</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/schoolperiods"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">calendar_month</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Periodos Escolares</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/qualifications/upload"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">upload</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Carga de Archivos</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/users"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">people</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Usuarios</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/teachers"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">people</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Docentes</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/reports"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">receipt_long</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Reportes</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/payments"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">payment</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Pagos</span>
+          </a>
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/configuration"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">settings</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Configuración</span>
+          </a>
+        </li>
+
+        <!-- MENU DOCENTES -->
+        <li class="nav-item">
+          <a
+            class="nav-link text-white"
+            routerLink="/dashboard/mysubjects"
+            routerLinkActive="active bg-gradient-primary"
+            [routerLinkActiveOptions]="{ exact: false }"
+          >
+            <div
+              class="text-white text-center me-2 d-flex align-items-center justify-content-center"
+            >
+              <i class="material-icons opacity-10">school</i>
+            </div>
+
+            <span class="nav-link-text ms-1">Mis Materias</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </aside>
+
+  <main class="main-content border-radius-lg">
+    <!-- Navbar -->
+    <nav
+      class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl"
+      id="navbarBlur"
+      data-scroll="true"
+    >
+      <div class="container-fluid py-1 px-3">
+        <div
+          class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4"
+          id="navbar"
+        >
+          <div
+            class="ms-md-auto pe-md-3 d-flex align-items-center"
+            style="cursor: pointer"
+          >
+            <i class="fa fa-user me-sm-1"></i>
+            <span class="d-sm-inline d-none">email user here</span>
+          </div>
+
+          <ul class="navbar-nav justify-content-end">
+            <li class="nav-item d-flex align-items-center"></li>
+            <li class="nav-item d-flex align-items-center">
+              <a
+                href="javascript:;"
+                class="nav-link text-body font-weight-bold px-0"
+              >
+                <span class="d-sm-inline d-none">Cerrar Sesión</span>
+                <i class="fa fa-power-off me-sm-1"></i>
+              </a>
+            </li>
+            <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+              <a
+                href="javascript:;"
+                class="nav-link text-body p-0"
+                id="iconNavbarSidenav"
+                #iconNavbarSidenav
+              >
+                <div class="sidenav-toggler-inner">
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                  <i class="sidenav-toggler-line"></i>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End Navbar -->
+
+    <div class="container-fluid py-4 rowContainer">
+      <div class="row">
+        <div class="col-12">
+          <div class="card my-4">
+            <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+              <div
+                class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3"
+              >
+                <h6 class="text-white text-capitalize ps-3">
+                  @if (iconPath) {
+                  <img [src]="iconPath" width="40px" alt="Examen" />
+                  }
+                  {{ title }}
+                </h6>
+              </div>
+            </div>
+            <div class="card-body px-0 pb-2">
+              <router-outlet></router-outlet>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer class="footer py-4">
+        <div class="container-fluid">
+          <div class="row align-items-center justify-content-lg-between">
+            <div class="col-lg-6 mb-lg-0 mb-4">
+              <div
+                class="copyright text-center text-sm text-muted text-lg-start"
+              >
+                © {{ CurrentYearPipe }} SmartSchool
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+</div>
